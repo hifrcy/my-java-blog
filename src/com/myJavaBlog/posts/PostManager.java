@@ -8,21 +8,15 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class PostManager {
 	private ArrayList<Post> posts;
-	public String jsonString;
 	
 	public PostManager() {
 		this.posts = new ArrayList<Post>();
-		this.posts.add(
-			new Post(1, "lorem ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
-		);
-		this.posts.add(
-			new Post(2, "elsass ipsum", "Lorem Elsass ipsum Wurschtsalad DNA, geïz commodo placerat.")
-		);
 		
 		URL url = null;
 		try {
@@ -71,7 +65,14 @@ public class PostManager {
 			connection.disconnect();
 
 			JSONArray root = (JSONArray) jsonParsed;
-			this.jsonString = root.toJSONString();
+			for(int i=0; i<root.size(); i++){
+				JSONObject postObject = (JSONObject) root.get(i);
+				int id = Math.toIntExact((long) postObject.get("id"));
+				String title = (String) postObject.get("title");
+				String content = (String) postObject.get("content");
+				
+				this.posts.add(new Post(id, title, content));
+			}
 		}
 	}
 	
