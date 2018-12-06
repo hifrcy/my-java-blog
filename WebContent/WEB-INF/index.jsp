@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>My Java Blog</title>
 </head>
 <body>
-
+<h1>My Java Blog</h1>
+<p>Welcome to My Java Blog</p>
+<a href="posts">see my posts</a>
 </body>
 </html>
