@@ -14,4 +14,8 @@ public class PostManager {
 			new Post(2, "elsass ipsum", "Lorem Elsass ipsum Wurschtsalad DNA, geïz commodo placerat.")
 		);
 	}
+	
+	public ArrayList<Post> getAllPosts() {
+		return this.posts;
+	}
 }
