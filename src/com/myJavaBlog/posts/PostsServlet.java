@@ -26,7 +26,9 @@ public class PostsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		var post = new Post(1, "lorem ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+		request.setAttribute("post", post);
+		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/posts/index.jsp").forward(request, response);
 	}
 
