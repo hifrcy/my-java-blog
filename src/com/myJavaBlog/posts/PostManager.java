@@ -79,4 +79,14 @@ public class PostManager {
 	public ArrayList<Post> getAllPosts() {
 		return this.posts;
 	}
+	
+	public Post getPostById(int id) {
+		for(var post : this.posts) {
+			if(post.getId() == id) {
+				return post;
+			}
+		}
+		
+		return null;
+	}
 }
