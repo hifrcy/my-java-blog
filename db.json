@@ -1,0 +1,17 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "lorem ipsum",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "id": 2,
+      "title": "elsass ipsum",
+      "content": "Lorem Elsass ipsum Wurschtsalad DNA, geïz commodo placerat."
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
