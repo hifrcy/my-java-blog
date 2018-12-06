@@ -1,12 +1,15 @@
 package com.myJavaBlog.posts;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class PostManager {
 	private ArrayList<Post> posts;
@@ -41,28 +44,23 @@ public class PostManager {
 		}
 
 		if(status == 200) {
-			BufferedReader in = null;
+			InputStreamReader in = null;
 			try {
-				in = new BufferedReader(
-					new InputStreamReader(
-						connection.getInputStream()
-					)
+				in = new InputStreamReader(
+					connection.getInputStream()
 				);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			String inputLine = null;
-			StringBuffer content = new StringBuffer();
-			try {
-				while ((inputLine = in.readLine()) != null) {
-				    content.append(inputLine);
-				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+						
+			JSONParser parser = new JSONParser();
+	        Object jsonParsed = null;
+	        try{
+	            jsonParsed = parser.parse(in);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
 			
 			try {
 				in.close();
@@ -71,7 +69,9 @@ public class PostManager {
 				e.printStackTrace();
 			}
 			connection.disconnect();
-			this.jsonString = content.toString();
+
+			JSONArray root = (JSONArray) jsonParsed;
+			this.jsonString = root.toJSONString();
 		}
 	}
 	
