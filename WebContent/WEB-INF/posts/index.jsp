@@ -15,5 +15,6 @@
 		<li><a href="?id=<%= post.getId() %>"><%= post.getTitle() %></a></li>
 	<% } %>
 </ul>
+<%= request.getAttribute("jsonString") %>
 </body>
 </html>

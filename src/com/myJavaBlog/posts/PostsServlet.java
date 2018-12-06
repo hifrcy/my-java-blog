@@ -31,6 +31,7 @@ public class PostsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("posts", this.postManager.getAllPosts());
+		request.setAttribute("jsonString", this.postManager.jsonString);
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/posts/index.jsp").forward(request, response);
 	}
