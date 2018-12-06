@@ -1,5 +1,7 @@
 package com.myJavaBlog.posts;
 
-public class PostManager {
+import java.util.ArrayList;
 
+public class PostManager {
+	private ArrayList<Post> posts;
 }
