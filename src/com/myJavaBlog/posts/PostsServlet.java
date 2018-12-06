@@ -30,9 +30,14 @@ public class PostsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("posts", this.postManager.getAllPosts());
-		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/posts/index.jsp").forward(request, response);
+		if(request.getParameter("id") == null) {
+			request.setAttribute("posts", this.postManager.getAllPosts());
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/posts/index.jsp").forward(request, response);
+		}
+		else {
+			this.getServletContext().getRequestDispatcher("/WEB-INF/posts/read.jsp").forward(request, response);
+		}
 	}
 
 }
