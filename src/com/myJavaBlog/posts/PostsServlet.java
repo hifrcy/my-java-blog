@@ -36,6 +36,12 @@ public class PostsServlet extends HttpServlet {
 			this.getServletContext().getRequestDispatcher("/WEB-INF/posts/index.jsp").forward(request, response);
 		}
 		else {
+			request.setAttribute("post",
+				this.postManager.getPostById(
+					Integer.parseInt(request.getParameter("id"))
+				)
+			);
+			
 			this.getServletContext().getRequestDispatcher("/WEB-INF/posts/read.jsp").forward(request, response);
 		}
 	}
