@@ -12,7 +12,7 @@
 <h1>My Posts</h1>
 <ul>
 	<% for(Post post : (List<Post>)request.getAttribute("posts")) { %>
-		<li><a href="?id=<%= post.getId() %>"><%= post.getTitle() %></a></li>
+		<li><a href="<%= request.getContextPath() %>/posts?id=<%= post.getId() %>"><%= post.getTitle() %></a></li>
 	<% } %>
 </ul>
 </body>
